@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                  <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
+                  <p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Rut:</strong>
+  <%= @profesionale.rut %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @profesionale.nombre %>
+</p>
+
+<p>
+  <strong>Segundo nombre:</strong>
+  <%= @profesionale.segundo_nombre %>
+</p>
+
+<p>
+  <strong>Apellido paterno:</strong>
+  <%= @profesionale.apellido_paterno %>
+</p>
+
+<p>
+  <strong>Apellido materno:</strong>
+  <%= @profesionale.apellido_materno %>
+</p>
+
+<p>
+  <strong>Profesion:</strong>
+  <%= @profesionale.profesion %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @profesionale.descripcion %>
+</p>
+
+<%= link_to 'Editar', edit_profesionale_path(@profesionale) %> |
+<%= link_to 'Volver', profesionales_path %>
+
+
+   
+          </div>
+                   
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+

@@ -1,0 +1,26 @@
+<link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<section class="jumbotron text-center">
+    <div class="container">
+        <p class="lead text-muted mb-0">Recuperar Contraseña!</p>
+    </div>
+</section>
+<section class="jumbotron text-left">
+    <div class="container">
+		<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+		  <%= devise_error_messages! %>
+
+		  <div class="field form-group">
+		  <%= f.label :email %><br />
+		  <%= f.email_field :email , class: 'form-control' , required:"true"%>
+		  </div>
+
+		  <div class="actions form-group">
+		    <%= f.submit "ENVIAR INSTRUCCIONES" , class: 'btn btn-success'%>
+		  </div>
+		<% end %>
+		<%= render "devise/shared/links" %>
+    </div>
+</section>

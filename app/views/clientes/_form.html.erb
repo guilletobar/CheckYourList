@@ -1,0 +1,85 @@
+
+<!------ Include the above in your HEAD tag ---------->
+<div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+
+    <ul class="nav nav-pills nav-stacked" style="border-right:2px solid black">
+        <!--<li class="nav-header"></li>-->
+        <li><a href="/../../welcome/index"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li><a href="/../../clientes"><i class="fa fa-child" aria-hidden="true"></i> Administrar Clientes</a></li>
+        <li><a href="/../../profesionales"><i class="fa fa-male" aria-hidden="true"></i> Administrar Profesionales</a></li>
+        <li><a href="/../../actividades"><i class="fa fa-file-text-o" aria-hidden="true"></i> Administrar Actividades</a></li>
+        <li><a href="#"><i class="fa fa-file" aria-hidden="true"></i> Contratos</a></li>
+        <li><a href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Generar Informes</a></li>
+        <li><a href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Generar Reporte</a></li>
+    </ul>
+</div><!-- /span-3 -->
+<div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
+<div class="container">
+
+<div class="container-fluid">
+   
+   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+
+
+
+
+   
+</div>
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                  <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
+                  
+
+    <%= form_with(model: cliente, local: true) do |form| %>
+  <% if cliente.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cliente.errors.count, "error") %> Prohibido este cliente ya esta guardado:</h2>
+
+      <ul>
+        <% cliente.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= form.label :nombre %>
+    <%= form.text_field :nombre , class: 'form-control' , required:"true"%>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :apellido_paterno %>
+    <%= form.text_field :apellido_paterno , class: 'form-control' , required:"true"%>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :apellido_materno %>
+    <%= form.text_field :apellido_materno , class: 'form-control' , required:"true"%>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :rut %>
+    <%= form.text_field :rut , class: 'form-control' , required:"true"%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class:'btn btn-success'%>
+    <%= link_to 'Volver', clientes_path, class:'btn btn-primary' %>
+
+  </div>
+  
+<% end %>
+          </div>           
+        </div>
+      </div>
+    </div>  
+  </div>
+</div>

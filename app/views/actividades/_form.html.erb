@@ -1,0 +1,53 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                  <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
+
+                  <%= form_with(model: actividade, local: true) do |form| %>
+                  <% if actividade.errors.any? %>
+                    <div id="error_explanation">
+                      <h2><%= pluralize(actividade.errors.count, "error") %> prohibited this actividade from being saved:</h2>
+
+                      <ul>
+                        <% actividade.errors.full_messages.each do |message| %>
+                          <li><%= message %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
+
+                  <div class="field form-group">
+                    <%= form.label :nombre %>
+                    <%= form.text_field :nombre , class: 'form-control' , required:"true"%>
+                  </div>
+
+                  <div class="field form-group">
+                    <%= form.label :descripcion %>
+                    <%= form.text_field :descripcion, class: 'form-control' , required:"true" %>
+                  </div>
+
+                  <div class="field form-group">
+                    <%= form.label :fecha %>
+                    <%= form.text_field :fecha , class: 'form-control' , required:"true"%>
+                  </div>
+
+                  <div class="field form-group">
+                    <%= form.label :tipo_actividad %>
+                    <%= form.text_field :tipo_actividad , class: 'form-control' , required:"true"%>
+                  </div>
+
+                  <div class="actions">
+                    <%= form.submit %>
+                  </div>
+                <% end %>
+</div>
+                   
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

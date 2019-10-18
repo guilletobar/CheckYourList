@@ -1,0 +1,69 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                  <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
+
+   <%= form_with(model: profesionale, local: true) do |form| %>
+  <% if profesionale.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(profesionale.errors.count, "error") %> Profesional ya se encuentra en el sistema:</h2>
+
+      <ul>
+        <% profesionale.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= form.label :rut %>
+    <%= form.text_field :rut  , class: 'form-control' , required:"true"%>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :nombre %>
+    <%= form.text_field :nombre  , class: 'form-control' , required:"true"%>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :segundo_nombre %>
+    <%= form.text_field :segundo_nombre , class: 'form-control' , required:"true" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :apellido_paterno %>
+    <%= form.text_field :apellido_paterno  , class: 'form-control' , required:"true"%>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :apellido_materno %>
+    <%= form.text_field :apellido_materno  , class: 'form-control' , required:"true"%>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :profesion %>
+    <%= form.text_field :profesion  , class: 'form-control' , required:"true"%>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :descripcion %>
+    <%= form.text_area :descripcion  , class: 'form-control' , required:"true"%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+   
+</div>
+                   
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

@@ -1,0 +1,46 @@
+
+<div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                  <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
+                  <p id="notice"><%= notice %></p>
+
+                  <h1>Actividades</h1>
+
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Fecha</th>
+                        <th>Tipo actividad</th>
+                        <th colspan="3"></th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <% @actividades.each do |actividade| %>
+                        <tr>
+                          <td><%= actividade.nombre %></td>
+                          <td><%= actividade.descripcion %></td>
+                          <td><%= actividade.fecha %></td>
+                          <td><%= actividade.tipo_actividad %></td>
+                          <td><%= link_to 'Mostrar', actividade %></td>
+                          <td><%= link_to 'Editar', edit_actividade_path(actividade) %></td>
+                          <td><%= link_to 'Eliminar', actividade, method: :delete, data: { confirm: 'Estas Seguro?' } %></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                  <br>
+                  <%= link_to 'Agregar Nueva Actividad', new_actividade_path %>
+                </div>
+              </div>               
+            </div>
+          </div>
+        </div> 
+      </div>
+</div>
