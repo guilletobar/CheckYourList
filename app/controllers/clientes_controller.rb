@@ -29,7 +29,7 @@ class ClientesController < ApplicationController
     respond_to do |format|
       if @cliente.save
         format.html { redirect_to @cliente, notice: 'Cliente fue creado exitosamente.' }
-        format.json { render :show, status: :created, location: @cliente }
+        format.json { render :index, status: :created, location: @cliente }
       else
         format.html { render :new }
         format.json { render json: @cliente.errors, status: :unprocessable_entity }
