@@ -1,0 +1,20 @@
+<table id="datos" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido paterno</th>
+            <th>Apellido materno</th>
+            <th>Rut</th>
+        </tr>
+    </thead>
+    <tbody >
+    <% @clientes.each do |cliente| %>
+        <tr>
+            <td><%= cliente.nombre %></td>
+            <td><%= cliente.apellido_paterno %></td>
+            <td><%= cliente.apellido_materno %></td>
+            <td><%= cliente.rut %></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>

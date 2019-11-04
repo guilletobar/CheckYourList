@@ -1,36 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
-</head>
-<body>
-    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
-    
-        <ul class="nav nav-pills nav-stacked" style="border-right:2px solid black">
-          <li><a href="/../../welcome/index"><i class="fas fa-dashboard"></i> Inicio</a></li>
-            <li><a href="/../../clientes"><i class="fa fa-child" aria-hidden="true"></i> Administrar Clientes</a></li>
-            <li><a href="/../../profesionales"><i class="fa fa-male" aria-hidden="true"></i> Administrar Profesionales</a></li>
-            <li><a href="/../../actividades"><i class="fa fa-file-text-o" aria-hidden="true"></i> Administrar Actividades</a></li>
-            <li><a href="#"><i class="fa fa-file" aria-hidden="true"></i> Contratos</a></li>
-            <li><a href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Generar Informes</a></li>
-            <li><a href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Generar Reporte</a></li>
-    
-        </ul>
-    </div><!-- /span-3 -->
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                      <p id="notice"><%= notice %></p>
-                      <h1>Clientes</h1>
-                      <div class="table-responsive">
-                      <table id="table_id" class="display">
+<script language="javascript">
+    function doSearch()
+    {
+        const tableReg = document.getElementById('datos');
+        const searchText = document.getElementById('searchTerm').value.toLowerCase();
+        let total = 0;
+
+        // Recorremos todas las filas con contenido de la tabla
+        for (let i = 1; i < tableReg.rows.length; i++) {
+            // Si el td tiene la clase "noSearch" no se busca en su cntenido
+            if (tableReg.rows[i].classList.contains("noSearch")) {
+                continue;
+            }
+
+            let found = false;
+            const cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
+            // Recorremos todas las celdas
+            for (let j = 0; j < cellsOfRow.length && !found; j++) {
+                const compareWith = cellsOfRow[j].innerHTML.toLowerCase();
+                // Buscamos el texto en el contenido de la celda
+                if (searchText.length == 0 || compareWith.indexOf(searchText) > -1) {
+                    found = true;
+                    total++;
+                }
+            }
+            if (found) {
+                tableReg.rows[i].style.display = '';
+            } else {
+                // si no ha encontrado ninguna coincidencia, esconde la
+                // fila de la tabla
+                tableReg.rows[i].style.display = 'none';
+            }
+        }
+
+        // mostramos las coincidencias
+        const lastTR=tableReg.rows[tableReg.rows.length-1];
+        const td=lastTR.querySelector("td");
+        lastTR.classList.remove("hide", "red");
+        if (searchText == "") {
+            lastTR.classList.add("hide");
+        } else if (total) {
+            td.innerHTML="Se ha encontrado "+total+" coincidencia"+((total>1)?"s":"");
+        } else {
+            lastTR.classList.add("red");
+            td.innerHTML="No se han encontrado coincidencias";
+        }
+    }
+</script>
+<div class="col-xs-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Clientes</h4>
+            <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+            <div class="heading-elements">
+                <ul class="list-inline mb-0">
+                    <li>
+                        <input id="searchTerm" class="form-control form-control input" placeholder="Buscar" type="text" onkeyup="doSearch()" />
+                    </li>
+                    <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+                    <li><a data-action="reload"><i class="icon-reload"></i></a></li>
+                    <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                    <li><a data-action="close"><i class="icon-cross2"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-body collapse in">
+          <br>
+          <li><%= link_to 'Agregar un nuevo cliente', new_cliente_path, class:'btn btn-primary' %></li>
+            
+            <div class="card-block card-dashboard">
+                <div class="table-responsive">
+                      <table id="datos" class="table table-bordered table-striped">
                         <thead>
                           <tr>
                             <th>Nombre</th>
@@ -42,8 +81,7 @@
                             <th ></th>
                           </tr>
                         </thead>
-    
-                        <tbody>
+                        <tbody >
                           <% @clientes.each do |cliente| %>
                             <tr>
                               <td><%= cliente.nombre %></td>
@@ -58,19 +96,10 @@
                         </tbody>
                       </table>
                     </div>
-                      <br>
-                      <%= link_to 'Agregar un cliente nuevo', new_cliente_path, class:'btn btn-primary' %>
+                  </div>
                 </div>
-              </div>  
+              </div>
             </div>
-          </div>
-        </div>
-    </div>
-    <script>
-        $(document).ready( function () {
-        $('#table_id').DataTable();
-        } );
-    </script>
-    </body>
-</html>
+            
 
+                    

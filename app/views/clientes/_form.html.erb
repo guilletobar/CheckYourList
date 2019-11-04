@@ -1,85 +1,85 @@
-
-<!------ Include the above in your HEAD tag ---------->
-<div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
-
-    <ul class="nav nav-pills nav-stacked" style="border-right:2px solid black">
-        <!--<li class="nav-header"></li>-->
-        <li><a href="/../../welcome/index"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li><a href="/../../clientes"><i class="fa fa-child" aria-hidden="true"></i> Administrar Clientes</a></li>
-        <li><a href="/../../profesionales"><i class="fa fa-male" aria-hidden="true"></i> Administrar Profesionales</a></li>
-        <li><a href="/../../actividades"><i class="fa fa-file-text-o" aria-hidden="true"></i> Administrar Actividades</a></li>
-        <li><a href="#"><i class="fa fa-file" aria-hidden="true"></i> Contratos</a></li>
-        <li><a href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Generar Informes</a></li>
-        <li><a href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Generar Reporte</a></li>
-    </ul>
-</div><!-- /span-3 -->
-<div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
-<div class="container">
-
-<div class="container-fluid">
-   
-   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" rel="stylesheet">
-
-
-
-
-   
-</div>
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                  <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
-                  
-
-    <%= form_with(model: cliente, local: true) do |form| %>
-  <% if cliente.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(cliente.errors.count, "error") %> Prohibido este cliente ya esta guardado:</h2>
-
-      <ul>
-        <% cliente.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field form-group">
-    <%= form.label :nombre %>
-    <%= form.text_field :nombre , class: 'form-control' , required:"true"%>
-  </div>
-
-  <div class="field form-group">
-    <%= form.label :apellido_paterno %>
-    <%= form.text_field :apellido_paterno , class: 'form-control' , required:"true"%>
-  </div>
-
-  <div class="field form-group">
-    <%= form.label :apellido_materno %>
-    <%= form.text_field :apellido_materno , class: 'form-control' , required:"true"%>
-  </div>
-
-  <div class="field form-group">
-    <%= form.label :rut %>
-    <%= form.text_field :rut , class: 'form-control' , required:"true"%>
-  </div>
-
-  <div class="actions">
-    <%= form.submit class:'btn btn-success'%>
-    <%= link_to 'Volver', clientes_path, class:'btn btn-primary' %>
-
-  </div>
-  
-<% end %>
-          </div>           
+<br>
+<div class="col-xs-9">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title" id="basic-layout-colored-form-control">User Profile</h4>
+        <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+        <div class="heading-elements">
+          <ul class="list-inline mb-0">
+            <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+            <li><a data-action="reload"><i class="icon-reload"></i></a></li>
+            <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+            <li><a data-action="close"><i class="icon-cross2"></i></a></li>
+          </ul>
         </div>
       </div>
-    </div>  
-  </div>
+      <div class="card-body collapse in">
+        <div class="card-block">
+          <div class="card-text">
+          </div> 
+          <%= form_with(model: cliente, local: true) do |form| %>
+              <% if cliente.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(cliente.errors.count, "error") %> Prohibido este cliente ya esta guardado:</h2>
+
+                  <ul>
+                    <% cliente.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+          <div class="form-body">
+              <h4 class="form-section"><i class="icon-eye6"></i> Datos Cliente</h4>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="userinput1">Nombre</label>
+                    <%= form.text_field :nombre , class: 'form-control border-primary' , required:"true", placeholder:"Nombre"%>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="userinput2">Apellido Paterno</label>
+                    <%= form.text_field :apellido_paterno , class: 'form-control border-primary' , required:"true", placeholder:"Apellido Paterno"%>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="userinput3">Apellido Materno</label>
+                    <%= form.text_field :apellido_materno , class: 'form-control border-primary' , required:"true", placeholder:"Apellido Materno"%>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="userinput4">Rut</label>
+                    <%= form.text_field :rut , class: 'form-control border-primary' , required:"true", placeholder:"Rut"%>
+                  </div>
+                </div>
+              </div>
+
+              
+
+            </div>
+
+            <div class="form-actions right">
+              <%= link_to 'Volver', clientes_path, class:'btn btn-warning' %>
+              <%= form.submit  class:'btn btn-primary'%>
+            </div>                  
+              
+
+             
+
+              <div class="actions">
+                
+                
+
+              </div>
+              <% end %>
+        </div>
+      </div>
+    </div>
 </div>
+            

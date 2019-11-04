@@ -1,10 +1,24 @@
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                  <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
-                  	<p id="notice"><%= notice %></p>
+<div class="col-xs-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Cliente <%= @cliente.nombre%> registrado!</h4>
+            <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+            <div class="heading-elements">
+                <ul class="list-inline mb-0">
+                    <li>
+                    </li>
+                    <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+                    <li><a data-action="reload"><i class="icon-reload"></i></a></li>
+                    <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                    <li><a data-action="close"><i class="icon-cross2"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-body collapse in">
+          <br>
+            
+            <div class="card-block card-dashboard">
+                <div class="table-responsive">
                     <table class="table table-striped">
                     <thead>
                       <tr>
@@ -26,9 +40,16 @@
                   </table>
                     <%= link_to 'Editar', edit_cliente_path(@cliente), class:'btn btn-primary' %> 
                     <%= link_to 'Volver', clientes_path, class:'btn btn-primary' %> 
-					        </div>  
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    
                 </div>
             </div>
         </div>
     </div>
 </div>
+
