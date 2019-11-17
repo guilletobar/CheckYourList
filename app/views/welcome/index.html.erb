@@ -13,9 +13,13 @@
                         <h6><i class="icon-circle success"></i> <span class="grey darken-1">Completed</span></h6>
                     </li>
                 </ul>
-                <div class="chartjs height-250">
-                    <canvas id="line-stacked-area" height="250"></canvas>
-                </div>
+                <%= line_chart charts_new_clients_path %>
+                <%# <div class="chartjs height-250">
+                    <canvas id="line-stacked-area" height="250">
+                    
+                    </canvas>
+                    
+                </div> %>
             </div>
             <div class="card-footer">
                 <div class="row">
@@ -35,31 +39,17 @@
                         <progress class="progress progress-xs mt-2 progress-success" value="60" max="100"></progress>
                     </div>
                     <div class="col-xs-3 text-xs-center">
-                        <span class="text-muted">Total de Ingresos</span>
-                        <h2 class="block font-weight-normal">$11,582</h2>
+                        <span class="text-muted">Clientes registrados</span>
+                        <h2 class="block font-weight-normal">
+                        <%= Cliente.select(:id).count %>
+                        </h2>
                         <progress class="progress progress-xs mt-2 progress-success" value="90" max="100"></progress>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-xl-4 col-lg-12">
-        <div class="card card-inverse bg-info">
-            <div class="card-body">
-                <div class="position-relative">
-                    <div class="chart-title position-absolute mt-2 ml-2 white">
-                        <h1 class="display-4">84%</h1>
-                        <span>Accidentes</span>
-                    </div>
-                    <canvas id="emp-satisfaction" class="height-400 block"></canvas>
-                    <div class="chart-stats position-absolute position-bottom-0 position-right-0 mb-2 mr-3 white">
-                        <a href="#" class="btn bg-info bg-darken-3 mr-1 white">Estadisticas <i class="icon-stats-bars"></i></a> Último Año.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    
                 <div class="col-xl-4 col-lg-12">
                     <div class="card">
                         <div class="card-body">
@@ -68,8 +58,8 @@
                                     <i class="icon-user1 font-large-2 white"></i>
                                 </div>
                                 <div class="p-2 media-body">
-                                    <h5 class="deep-orange">New Users</h5>
-                                    <h5 class="text-bold-400">1,22,356</h5>
+                                    <h5 class="deep-orange">Nuevos usuarios</h5>
+                                    <h5 class="text-bold-400"><%= User.select(:id).count %></h5>
                                     <progress class="progress progress-sm progress-deep-orange mt-1 mb-0" value="45" max="100"></progress>
                                 </div>
                             </div>
@@ -82,8 +72,8 @@
                                     <i class="icon-camera7 font-large-2 white"></i>
                                 </div>
                                 <div class="p-2 media-body">
-                                    <h5>New Products</h5>
-                                    <h5 class="text-bold-400">28</h5>
+                                    <h5>Nuevas actividates</h5>
+                                    <h5 class="text-bold-400"><%= Actividade.select(:id).count %></h5>
                                 </div>
                             </div>
                         </div>
@@ -92,8 +82,8 @@
                         <div class="card-body">
                             <div class="media">
                                 <div class="p-2 media-body text-xs-left">
-                                    <h5>New Users</h5>
-                                    <h5 class="text-bold-400">1,22,356</h5>
+                                    <h5>Nuevos Profesionales</h5>
+                                    <h5 class="text-bold-400"><%= Profesionale.select(:id).count %></h5>
                                 </div>
                                 <div class="p-2 text-xs-center bg-teal media-right media-middle">
                                     <i class="icon-user1 font-large-2 white"></i>
@@ -180,17 +170,18 @@
 </script>
 
   <% else %>
+  <body >
+      
   <nav class="header-navbar navbar navbar-semi-dark navbar-shadow">
       <ul class="nav navbar-nav float-xs-right">
         <%= link_to "Login", new_user_session_path, :class => 'navbar-link',class:'btn btn-outline-primary'  %>
       </ul>
     </nav>
-    <div class="container-fluid">
+    <div class="container-fluid" >
         <br>    
         <br>
         <br>
         <br>
-    </div>
         <div class="row">
             <div class="col-xl-3 col-lg-6 col-xs-12">
                 <div class="card">
@@ -226,6 +217,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="col-xl-3 col-lg-6 col-xs-12">
                 <div class="card">
                     <div class="card-body">
@@ -243,6 +235,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="col-xl-3 col-lg-6 col-xs-12">
                 <div class="card">
                     <div class="card-body">
@@ -260,24 +253,25 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xl-3 col-lg-6 col-xs-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="card-block">
-                            <div class="media">
-                                <div class="media-body text-xs-left">
-                                    <h3 class="teal">156</h3>
-                                    <span>New Clients</span>
-                                </div>
-                                <div class="media-right media-middle">
-                                    <i class="icon-user1 teal font-large-2 float-xs-right"></i>
+        
+            <div class="col-xl-3 col-lg-6 col-xs-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-block">
+                                <div class="media">
+                                    <div class="media-body text-xs-left">
+                                        <h3 class="teal">156</h3>
+                                        <span>New Clients</span>
+                                    </div>
+                                    <div class="media-right media-middle">
+                                        <i class="icon-user1 teal font-large-2 float-xs-right"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            
             <div class="col-xl-3 col-lg-6 col-xs-12">
                 <div class="card">
                     <div class="card-body">
@@ -295,7 +289,58 @@
                     </div>
                 </div>
             </div>
-<footer class="container" style="align-content: center;">
-  <p>&copy; Check Your List -2019</p>
-</footer>
+            
+            <div class="col-xl-3 col-lg-6 col-xs-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-block">
+                                <div class="media">
+                                    <div class="media-body text-xs-left">
+                                        <h3 class="cyan">423</h3>
+                                        <span>Support Tickets</span>
+                                    </div>
+                                    <div class="media-right media-middle">
+                                        <i class="icon-ios-help-outline cyan font-large-2 float-xs-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-xs-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-block">
+                                    <div class="media">
+                                        <div class="media-body text-xs-left">
+                                            <h3 class="pink">278</h3>
+                                            <span>New Projects</span>
+                                        </div>
+                                        <div class="media-right media-middle">
+                                            <i class="icon-bag2 pink font-large-2 float-xs-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+    </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <center>
+                    <footer class="container" style="align-content: center;">
+                            <p>&copy; Check Your List -2019</p>
+                          </footer>
+            </center>
+        </body>
+
 <% end %>

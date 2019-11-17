@@ -2,7 +2,14 @@ Rails.application.routes.draw do
   resources :actividades
   resources :profesionales
   resources :clientes
+  # resources :users
   devise_for :users
+
+  namespace :charts do
+      get "new_users"
+      get "new_clients"
+      get "count_clientes"
+  end
   
   get 'welcome/index'
   

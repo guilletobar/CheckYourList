@@ -5,6 +5,7 @@ class ClientesController < ApplicationController
   # GET /clientes.json
   def index
     @clientes = Cliente.all
+    @clientes_count = Cliente.all.count
     respond_to do |format|
       format.html
       format.json
