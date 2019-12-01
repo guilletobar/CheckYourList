@@ -1,0 +1,69 @@
+<div class="col-xs-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Clientes</h4>
+            <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+            <div class="heading-elements">
+                <ul class="list-inline mb-0">
+                    <li>
+                        <input id="searchTerm" class="form-control form-control input" placeholder="Buscar" type="text" onkeyup="doSearch()" />
+                    </li>
+                    <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+                    <li><a data-action="reload"><i class="icon-reload"></i></a></li>
+                    <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                    <li><a data-action="close"><i class="icon-cross2"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-body collapse in">
+          <br>            
+            <div class="card-block card-dashboard">
+                <div class="table-responsive">
+                      <table id="datos" class="table table-bordered table-striped">
+                        <thead>
+                          <tr>
+                            <th>Rut</th>
+                            <th>Nombre </th>
+                            <th>Comuna</th>
+                            <th >Dirección</th>
+                            <th >Correo</th>
+                            <th >Tel/Cel</th>
+                          </tr>
+                        </thead>
+                        <tbody >
+                            <tr>
+                              <td><%= @client.rut %></td>
+                              <td><%= @client.nombre %></td>
+                              <td><%= @client.comuna %></td>
+                              <td><%= @client.direccion %></td>
+                              <td><%= @client.correo %></td>
+                              <td><%= @client.telefono %></td>
+                            </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <%= link_to 'Editar', edit_client_path(@client), class:'btn btn-primary' %> 
+                    <%= link_to 'Volver', clients_path, class:'btn btn-warning' %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+
+                    
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+

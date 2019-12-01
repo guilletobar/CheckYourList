@@ -1,0 +1,110 @@
+<script language="javascript">
+    function doSearch()
+    {
+        const tableReg = document.getElementById('datos');
+        const searchText = document.getElementById('searchTerm').value.toLowerCase();
+        let total = 0;
+
+        // Recorremos todas las filas con contenido de la tabla
+        for (let i = 1; i < tableReg.rows.length; i++) {
+            // Si el td tiene la clase "noSearch" no se busca en su cntenido
+            if (tableReg.rows[i].classList.contains("noSearch")) {
+                continue;
+            }
+
+            let found = false;
+            const cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
+            // Recorremos todas las celdas
+            for (let j = 0; j < cellsOfRow.length && !found; j++) {
+                const compareWith = cellsOfRow[j].innerHTML.toLowerCase();
+                // Buscamos el texto en el contenido de la celda
+                if (searchText.length == 0 || compareWith.indexOf(searchText) > -1) {
+                    found = true;
+                    total++;
+                }
+            }
+            if (found) {
+                tableReg.rows[i].style.display = '';
+            } else {
+                // si no ha encontrado ninguna coincidencia, esconde la
+                // fila de la tabla
+                tableReg.rows[i].style.display = 'none';
+            }
+        }
+
+        // mostramos las coincidencias
+        const lastTR=tableReg.rows[tableReg.rows.length-1];
+        const td=lastTR.querySelector("td");
+        lastTR.classList.remove("hide", "red");
+        if (searchText == "") {
+            lastTR.classList.add("hide");
+        } else if (total) {
+            td.innerHTML="Se ha encontrado "+total+" coincidencia"+((total>1)?"s":"");
+        } else {
+            lastTR.classList.add("red");
+            td.innerHTML="No se han encontrado coincidencias";
+        }
+    }
+</script>
+<div class="col-xs-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Clientes</h4>
+            <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+            <div class="heading-elements">
+                <ul class="list-inline mb-0">
+                    <li>
+                        <input id="searchTerm" class="form-control form-control input" placeholder="Buscar" type="text" onkeyup="doSearch()" />
+                    </li>
+                    <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+                    <li><a data-action="reload"><i class="icon-reload"></i></a></li>
+                    <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                    <li><a data-action="close"><i class="icon-cross2"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-body collapse in">
+          <br>
+            <li><%= link_to 'Agregar Cliente', new_client_path, class:'btn btn-primary' %></li>
+            <div class="card-block card-dashboard">
+                <div class="table-responsive">
+                <table id="datos" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th>Rut</th>
+                      <th>Nombre</th>
+                      <th>Comuna</th>
+                      <th>Direccion</th>
+                      <th>Correo</th>
+                      <th>Telefono</th>
+                      <th colspan="3"></th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <% @clients.each do |client| %>
+                      <tr>
+                        <td><%= client.rut %></td>
+                        <td><%= client.nombre %></td>
+                        <td><%= client.comuna %></td>
+                        <td><%= client.direccion %></td>
+                        <td><%= client.correo %></td>
+                        <td><%= client.telefono %></td>
+                        <td><%= link_to 'Mostrar', client ,class:'btn btn-primary'%></td>
+                        <td><%= link_to 'Editar', edit_client_path(client) ,class:'btn btn-primary'%></td>
+                        <td><%= link_to 'Eliminar', client, method: :delete, data: { confirm: 'Estas Seguro?' }, class:'btn btn-danger' %></td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+            <br>
+            <br>
+
+
+

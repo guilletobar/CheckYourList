@@ -1,57 +1,66 @@
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                  <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
-                  <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Rut:</strong>
-  <%= @profesionale.rut %>
-</p>
-
-<p>
-  <strong>Nombre:</strong>
-  <%= @profesionale.nombre %>
-</p>
-
-<p>
-  <strong>Segundo nombre:</strong>
-  <%= @profesionale.segundo_nombre %>
-</p>
-
-<p>
-  <strong>Apellido paterno:</strong>
-  <%= @profesionale.apellido_paterno %>
-</p>
-
-<p>
-  <strong>Apellido materno:</strong>
-  <%= @profesionale.apellido_materno %>
-</p>
-
-<p>
-  <strong>Profesion:</strong>
-  <%= @profesionale.profesion %>
-</p>
-
-<p>
-  <strong>Descripcion:</strong>
-  <%= @profesionale.descripcion %>
-</p>
-
-<%= link_to 'Editar', edit_profesionale_path(@profesionale) %> |
-<%= link_to 'Volver', profesionales_path %>
-
-
-   
-          </div>
-                   
-                </div>
+<div class="col-xs-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Profesionales</h4>
+            <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+            <div class="heading-elements">
+                <ul class="list-inline mb-0">
+                    <li>
+                    </li>
+                    <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+                    <li><a data-action="reload"><i class="icon-reload"></i></a></li>
+                    <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                    <li><a data-action="close"><i class="icon-cross2"></i></a></li>
+                </ul>
             </div>
         </div>
-        
-    </div>
-</div>
+        <div class="card-body collapse in">
+          <br>            
+            <div class="card-block card-dashboard">
+                <div class="table-responsive">
+                      <table id="datos" class="table table-bordered table-striped">
+                        <thead>
+                          <tr>
+                            <th>Rut</th>
+                            <th>Nombre </th>
+                            <th>Segundo nombre</th>
+                            <th >Apellido paterno</th>
+                            <th >Apellido materno</th>
+                            <th >Profesion</th>
+                          </tr>
+                        </thead>
+                        <tbody >
+                            <tr>
+                              <td><%= @profesionale.rut %></td>
+                              <td><%= @profesionale.nombre %></td>
+                              <td><%= @profesionale.segundo_nombre %></td>
+                              <td><%= @profesionale.apellido_paterno %></td>
+                              <td><%= @profesionale.apellido_materno %></td>
+                              <td><%= @profesionale.profesion %></td>
+                            </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <br>
+                    <br>
+                    <%= link_to 'Editar', edit_profesionale_path(@profesionale), class:'btn btn-primary' %> 
+                    <%= link_to 'Volver', profesionales_path, class:'btn btn-warning' %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
 
+                    
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+
+  
+
+  
