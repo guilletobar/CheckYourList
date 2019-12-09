@@ -24,7 +24,7 @@
         <div class="card border-grey border-lighten-3 m-0">
             <div class="card-header no-border">
                 <div class="card-title text-xs-center">
-                    <div class="p-1"><h3>CheckYourList</h3></div>
+                    <div class="p-1"><%= image_tag("logo.PNG", :class => "brand-logo") %></div>
                 </div>
                 <h1 class="card-subtitle line-on-side text-muted text-xs-center font-small-3 pt-2"><span>Login </span></h1>
             </div>
@@ -44,6 +44,12 @@
                                 <i class="icon-key3"></i>
                             </div>
                         </fieldset>
+                        <% if notice %>
+                        <p class="alert alert-success"><%= notice %></p>
+                        <% end %>
+                        <% if alert %>
+                        <p class="alert alert-danger"><%= alert %></p>
+                        <% end %>
                         <fieldset class="form-group row">
                             <div class="col-md-6 col-xs-12 text-xs-center text-md-left">
                                 <fieldset>

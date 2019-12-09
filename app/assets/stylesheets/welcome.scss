@@ -1,5 +1,18 @@
   
   /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
-  #boxi {
-    background-color: #E5E7E9;;
+  .boxi {
+    background-image: url("bgd.png");
+    width: auto;
+    height: auto;
+    background-position: center;
+    background-repeat: no-repeat;
   }
+  .boxii {
+    background-image: url("bgr.png");
+    width: auto;
+    height: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  

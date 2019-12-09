@@ -1,43 +1,69 @@
-
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                  <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
-                  	<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Nombre:</strong>
-  <%= @actividade.nombre %>
-</p>
-
-<p>
-  <strong>Descripcion:</strong>
-  <%= @actividade.descripcion %>
-</p>
-
-<p>
-  <strong>Fecha:</strong>
-  <%= @actividade.fecha %>
-</p>
-
-<p>
-  <strong>Tipo actividad:</strong>
-  <%= @actividade.tipo_actividad %>
-</p>
-
-<%= link_to 'Editar', edit_actividade_path(@actividade) %> |
-<%= link_to 'Volver', actividades_path %>
-
-
-
-   
-					</div>
-                   
-                </div>
+<div class="col-xs-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Clientes</h4>
+            <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+            <div class="heading-elements">
+                <ul class="list-inline mb-0">
+                    <li>
+                        <input id="searchTerm" class="form-control form-control input" placeholder="Buscar" type="text" onkeyup="doSearch()" />
+                    </li>
+                    <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+                    <li><a data-action="reload"><i class="icon-reload"></i></a></li>
+                    <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                    <li><a data-action="close"><i class="icon-cross2"></i></a></li>
+                </ul>
             </div>
         </div>
-        
-    </div>
-</div>
+        <div class="card-body collapse in">
+          <br>            
+            <div class="card-block card-dashboard">
+                <div class="table-responsive">
+                      <table id="datos" class="table table-bordered table-striped">
+                        <thead>
+                          <tr>
+                            <th>Nombre</th>
+                            <th>Fecha </th>
+                            <th>Cliente </th>
+                            <th >Profesional designado</th>
+                            <th >Tipo de actividad</th>
+                            <th >Descripción</th>
+                          </tr>
+                        </thead>
+                        <tbody >
+                            <tr>
+                              <td><%= @actividade.nombre %></td>
+                              <td><%= @actividade.fecha %></td>
+                              <td><%= Client.select(:nombre).where(:id =>@actividade.client_id).first.nombre %></td>
+                              <td><%= Profesionale.select(:nombre).where(:id =>@actividade.profesionale_id).first.nombre %></td>
+                              <td><%= @actividade.tipo_actividad %></td>
+                              <td><%= @actividade.descripcion %></td>
+                            </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <%= link_to 'Editar', edit_actividade_path(@actividade), class:'btn btn-primary' %> 
+                    <%= link_to 'Volver', actividades_path, class:'btn btn-warning' %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            
+
+                    
+
+
+  
+
+  
+
+
+
+
+
+  
+
+
+
+

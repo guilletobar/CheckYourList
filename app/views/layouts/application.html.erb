@@ -1,4 +1,5 @@
-
+<% if signed_in? %>
+  <%if current_user.roles_id == 1%>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -10,11 +11,26 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
   </head>
-  <% if signed_in? %>
+  
+  <script type="text/javascript">
+    $("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+    });
+  </script>
   <body   class="vertical-layout vertical-menu 2-columns ">
     <nav class="header-navbar navbar navbar-with-menu navbar-fixed-top navbar-semi-dark navbar-shadow">
       <div class="navbar-wrapper">
-        <strong>Bienvenido <%= current_user.email%>  </strong>
+        <ul class="nav navbar-nav">
+                <li class="nav-item mobile-menu hidden-md-up float-xs-left">
+                  <a class="nav-link nav-menu-main menu-toggle hidden-xs"><i class="icon-menu5 font-large-1"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="navbar-brand nav-link"><%= image_tag("logo2.png", :class => "navbar-brand") %></a>
+                </li>
+        </ul>
+             
+        <ul class="navbar-brand">Bienvenido <%= current_user.username%>  </ul>
         <ul class="nav navbar-nav float-xs-right">
               <%= link_to "Registrar usuario", new_user_registration_path, :class => 'btn btn-outline-primary' %>
               <a><%= link_to "Editar Perfil", edit_user_registration_path, :class => 'btn btn-outline-primary'%></a>
@@ -22,7 +38,103 @@
         </ul>
       </div>
     </nav>
-    <div data-scroll-to-active="true" class="main-menu menu-fixed menu-dark menu-accordion menu-shadow fixed-navbar">
+    
+    <div class="main-menu menu-fixed menu-dark menu-shadow  ">
+        <!-- main menu header-->
+        <div class="main-menu-header">
+          <input type="text" placeholder="Search" class="menu-search form-control round"/>
+        </div>
+        <!-- / main menu header-->
+        <!-- main menu content-->
+        <div class="main-menu-content">
+          <ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main ">
+            <li class=" nav-item"><a href="/../../welcome/index"><i class="icon-home3"></i><span data-i18n="nav.dash.main" class="menu-title">Dashboard</span><span class="tag tag tag-primary tag-pill float-xs-right mr-2">2</span></a>
+            </li>
+            <li class=" nav-item"><a href="/../../clients"><i class="icon-stack-2"></i><span data-i18n="nav.page_layouts.main" class="menu-title">Clientes</span></a>
+            </li>
+            <li class=" nav-item"><a href="/../../profesionales"><i class="icon-briefcase4"></i><span data-i18n="nav.project.main" class="menu-title">Profesionales</span></a>
+            </li>
+            <li class=" nav-item"><a href="/../../actividades"><i class="icon-ios-albums-outline"></i><span data-i18n="nav.cards.main" class="menu-title">Actividades</span></a>
+            </li>
+            <li class=" nav-item"><a href="#"><i class="icon-whatshot"></i><span data-i18n="nav.advance_cards.main" class="menu-title">Facturas</span></a>
+            </li>
+          </ul>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="app-content content container-fluid">
+      <div class="content-wrapper">
+          <div class="content-body"><!-- stats -->
+            <div class="row">
+           
+            <% if notice %>
+            <p class="alert alert-success"><%= notice %></p>
+            <% end %>
+            <% if alert %>
+            <p class="alert alert-danger"><%= alert %></p>
+            <% end %>
+            <%= yield %>
+            <br>
+            <br>
+            <br>
+            </div>
+          </div>
+      </div>
+    </div>
+    
+</body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<footer class="footer footer-static footer-light navbar-border">
+    <p class="clearfix text-muted text-sm-center mb-0 px-2"><span class="float-md-left d-xs-block d-md-inline-block">Copyright  &copy; 2019 <a href="https://themeforest.net/user/pixinvent/portfolio?ref=pixinvent" target="_blank" class="text-bold-800 grey darken-2">CheckYourList </a>, All rights reserved. </span><span class="float-md-right d-xs-block d-md-inline-block">Hecho con <i class="icon-heart5 pink"></i></span></p>
+</footer>
+</html>
+  <% else %>
+    <!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>CheckYourList</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+  </head>
+  
+  <script type="text/javascript">
+    $("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+  <body   class="vertical-layout vertical-menu 2-columns ">
+    <nav class="header-navbar navbar navbar-with-menu navbar-fixed-top navbar-semi-dark navbar-shadow">
+      <div class="navbar-wrapper">
+        <ul class="nav navbar-nav">
+                <li class="nav-item mobile-menu hidden-md-up float-xs-left">
+                  <a class="nav-link nav-menu-main menu-toggle hidden-xs"><i class="icon-menu5 font-large-1"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="navbar-brand nav-link"><%= image_tag("logo2.png", :class => "navbar-brand") %></a>
+                </li>
+        </ul>
+             
+        <ul class="navbar-brand">Bienvenido <%= current_user.email%>  </ul>
+        <ul class="nav navbar-nav float-xs-right">
+              <%= link_to "Registrar usuario", new_user_registration_path, :class => 'btn btn-outline-primary' %>
+              <a><%= link_to "Editar Perfil", edit_user_registration_path, :class => 'btn btn-outline-primary'%></a>
+              <a><%= link_to "Salir", destroy_user_session_path, method: :delete, :class => 'btn btn-outline-primary'%></a>        
+        </ul>
+      </div>
+    </nav>
+    
+    <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow fixed-navbar">
         <!-- main menu header-->
         <div class="main-menu-header">
           <input type="text" placeholder="Search" class="menu-search form-control round"/>
@@ -33,33 +145,24 @@
           <ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
             <li class=" nav-item"><a href="/../../welcome/index"><i class="icon-home3"></i><span data-i18n="nav.dash.main" class="menu-title">Dashboard</span><span class="tag tag tag-primary tag-pill float-xs-right mr-2">2</span></a>
             </li>
-            <li class=" nav-item"><a href="/../../clients"><i class="icon-stack-2"></i><span data-i18n="nav.page_layouts.main" class="menu-title">Clientes</span></a>
+            <%# <li class=" nav-item"><a href="/../../clients"><i class="icon-stack-2"></i><span data-i18n="nav.page_layouts.main" class="menu-title">Clientes</span></a> %>
+            <%# </li> %>
+            <%# <li class=" nav-item"><a href="/../../profesionales"><i class="icon-briefcase4"></i><span data-i18n="nav.project.main" class="menu-title">Profesionales</span></a> %>
+            <%# </li> %>
+            <%# <li class=" nav-item"><a href="/../../actividades"><i class="icon-ios-albums-outline"></i><span data-i18n="nav.cards.main" class="menu-title">Actividades</span></a>
             </li>
-            <li class=" nav-item"><a href="/../../profesionales"><i class="icon-briefcase4"></i><span data-i18n="nav.project.main" class="menu-title">Profesionales</span></a>
-              
-            </li>
-            <li class=" nav-item"><a href="/../../actividades"><i class="icon-ios-albums-outline"></i><span data-i18n="nav.cards.main" class="menu-title">Actividades</span></a>
-              
-            </li>
-            <li class=" nav-item"><a href="#"><i class="icon-whatshot"></i><span data-i18n="nav.advance_cards.main" class="menu-title">Advance Cards</span></a>
-              
-            </li>
-            <li class=" nav-item"><a href="#"><i class="icon-compass3"></i><span data-i18n="nav.content.main" class="menu-title">Content</span></a>
-              
-            </li>
-            <li class=" nav-item"><a href="#"><i class="icon-grid2"></i><span data-i18n="nav.components.main" class="menu-title">Components</span></a>
-              
-            </li>
-            <li class=" nav-item"><a href="#"><i class="icon-eye6"></i><span data-i18n="nav.icons.main" class="menu-title">Icons</span></a>      
+            <li class=" nav-item"><a href="#"><i class="icon-whatshot"></i><span data-i18n="nav.advance_cards.main" class="menu-title">Facturas</span></a>
+            </li> %>
           </ul>
         </div>
     </div>
+    <br>
+    <br>
     <div class="app-content content container-fluid">
       <div class="content-wrapper">
           <div class="content-body"><!-- stats -->
             <div class="row">
-            <br>
-            <br>
+           
             <% if notice %>
             <p class="alert alert-success"><%= notice %></p>
             <% end %>
@@ -67,16 +170,17 @@
             <p class="alert alert-danger"><%= alert %></p>
             <% end %>
             <%= yield %>
+            <br>
+            <br>
+            <br>
             </div>
           </div>
       </div>
     </div>
-    <script>
-        $(document).ready( function () {
-        $('#table_id').DataTable();
-        } );
-    </script>
+    
 </body>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -85,6 +189,7 @@
     <p class="clearfix text-muted text-sm-center mb-0 px-2"><span class="float-md-left d-xs-block d-md-inline-block">Copyright  &copy; 2019 <a href="https://themeforest.net/user/pixinvent/portfolio?ref=pixinvent" target="_blank" class="text-bold-800 grey darken-2">CheckYourList </a>, All rights reserved. </span><span class="float-md-right d-xs-block d-md-inline-block">Hecho con <i class="icon-heart5 pink"></i></span></p>
 </footer>
 </html>
+<% end %>
 
   <% else %>
 <!DOCTYPE html>
@@ -98,7 +203,7 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>  
-<body data-open="click" data-menu="vertical-menu" data-col="2-columns" class="vertical-layout vertical-menu 2-columns ">
+<body  class="boxi ">
     <%= yield %>
 </body>
 <% end %> 

@@ -50,7 +50,7 @@
 <div class="col-xs-12">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">Profesionales</h4>
+            <h4 class="card-title">Actividades</h4>
             <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
             <div class="heading-elements">
                 <ul class="list-inline mb-0">
@@ -73,9 +73,9 @@
                     <thead>
                       <tr>
                         <th>Nombre</th>
-                        <th>Descripcion</th>
                         <th>Fecha</th>
                         <th>Tipo actividad</th>
+                        <th>Descripcion</th>
                         <th>Profesional asignado</th>
                         <th>Cliente asignado</th>
                         <th colspan="3"></th>
@@ -85,12 +85,14 @@
                       <% @actividades.each do |actividade| %>
                         <tr>
                           <td><%= actividade.nombre %></td>
-                          <td><%= actividade.descripcion %></td>
                           <td><%= actividade.fecha %></td>
                           <td><%= actividade.tipo_actividad %></td>
-                          <td><%= link_to 'Mostrar', actividade %></td>
-                          <td><%= link_to 'Editar', edit_actividade_path(actividade) %></td>
-                          <td><%= link_to 'Eliminar', actividade, method: :delete, data: { confirm: 'Estas Seguro?' } %></td>
+                          <td><%= actividade.descripcion %></td>
+                          <td><%= Profesionale.select(:nombre).where(:id =>actividade.profesionale_id).first.nombre %></td>
+                          <td><%= Client.select(:nombre).where(:id =>actividade.client_id).first.nombre %></td>
+                          <td><%= link_to 'Mostrar', actividade ,class:'btn btn-primary'%></td>
+                          <td><%= link_to 'Editar', edit_actividade_path(actividade) ,class:'btn btn-warning'%></td>
+                          <td><%= link_to 'Eliminar', actividade, method: :delete, data: { confirm: 'Estas Seguro?' },class:'btn btn-danger' %></td>
                         </tr>
                       <% end %>
                     </tbody>
@@ -100,6 +102,4 @@
               </div>               
             </div>
           </div>
-        </div> 
-      </div>
 </div>

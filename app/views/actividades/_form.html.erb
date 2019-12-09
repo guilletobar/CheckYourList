@@ -22,7 +22,6 @@
                   <% if actividade.errors.any? %>
                     <div id="error_explanation">
                       <h2><%= pluralize(actividade.errors.count, "error") %> prohibited this actividade from being saved:</h2>
-
                       <ul>
                         <% actividade.errors.full_messages.each do |message| %>
                           <li><%= message %></li>
@@ -38,33 +37,46 @@
                           <%= form.label :nombre %>
                           <%= form.text_field :nombre , class: 'form-control border-primary' , required:"true", placeholder:"Nombre Avtividad"%>
                         </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <%= form.label :fecha %>
+                          <%= form.text_field :fecha, html_options = {class: 'form-control border-primary datepicker',type:'date', placeholder: 'mm/dd/yyyy' }%>
                         </div>
-                          <div class="col-md-6">
-                            <div class="form-group">
+                      </div>
+                      </div>
+                      <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <%= form.label :tipo_actividad %>
+                  <%= form.select(:tipo_actividad, options_for_select([['Visita a terreno','Visita a terreno'],['Capacitacion',' Capacitacion'],['Asesoria',' Asesoria']]) ,{include_blank: true}, html_options = {class: 'form-control border-primary' } )%>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <%= form.label :cliente_id %>
+                          <%= collection_select(:actividade , :client_id, Client.all, :id, :nombre, {},{:multiple => false, class: 'form-control border-primary'})%>
+                        </div>
+                      </div>
+                      </div>
+                      <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <%= form.label :profesional_id %>
+                          <%= collection_select(:actividade , :profesionale_id, Profesionale.all, :id, :nombre, {}, {:multiple =>false,class: 'form-control border-primary' })%>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-group">
                               <%= form.label :descripcion %>
                               <%= form.text_field :descripcion, class: 'form-control border-primary' , required:"true", placeholder:"Descripción de actividad" %>
-                            </div>
-                            </div>
-                            </div>
-                            <div class="row">
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <%= form.label :fecha %>
-                                <%= form.text_field :fecha, html_options = {class: 'form-control border-primary datepicker',type:'date', placeholder: 'mm/dd/yyyy' }%>
-                              </div>
-                              </div>
-                          <div class="col-md-6">
-                            <div class="form-group">
-                              <%= form.label :tipo_actividad %>
-                              <%= form.text_field :tipo_actividad , class: 'form-control border-primary' , required:"true", placeholder:"Apellido Materno"%>
-                            </div>
-                            </div>
-                            </div>
-
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                         <div class="form-actions center">
                           <%= form.submit class:'btn btn-primary'%>
                           <%= link_to 'Volver', actividades_path, class:'btn btn-warning' %>
-
                         </div>
                       <% end %>
                 </div>

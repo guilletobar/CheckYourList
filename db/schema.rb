@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_01_043727) do
+ActiveRecord::Schema.define(version: 2019_12_08_185057) do
+
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string "namespace"
+    t.text "body"
+    t.string "resource_type"
+    t.integer "resource_id", precision: 38
+    t.string "author_type"
+    t.integer "author_id", precision: 38
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_type", "author_id"], name: "i_act_adm_com_aut_typ_aut_id"
+    t.index ["namespace"], name: "i_act_adm_com_nam"
+    t.index ["resource_type", "resource_id"], name: "i_act_adm_com_res_typ_res_id"
+  end
 
   create_table "actividades", force: :cascade do |t|
     t.string "nombre"
@@ -19,8 +33,20 @@ ActiveRecord::Schema.define(version: 2019_12_01_043727) do
     t.string "tipo_actividad"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "profesional_id", precision: 38
-    t.integer "cliente_id", precision: 38
+    t.integer "client_id", precision: 38
+    t.integer "profesionale_id", precision: 38
+  end
+
+  create_table "admin_users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at", precision: 6
+    t.datetime "remember_created_at", precision: 6
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_admin_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "i_adm_use_res_pas_tok", unique: true
   end
 
   create_table "clientes", force: :cascade do |t|
@@ -93,6 +119,8 @@ ActiveRecord::Schema.define(version: 2019_12_01_043727) do
     t.datetime "remember_created_at", precision: 6
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "roles_id", precision: 38
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "i_users_reset_password_token", unique: true
   end

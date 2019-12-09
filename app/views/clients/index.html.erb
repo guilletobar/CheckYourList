@@ -91,7 +91,7 @@
                         <td><%= client.correo %></td>
                         <td><%= client.telefono %></td>
                         <td><%= link_to 'Mostrar', client ,class:'btn btn-primary'%></td>
-                        <td><%= link_to 'Editar', edit_client_path(client) ,class:'btn btn-primary'%></td>
+                        <td><%= link_to 'Editar', edit_client_path(client) ,class:'btn btn-warning'%></td>
                         <td><%= link_to 'Eliminar', client, method: :delete, data: { confirm: 'Estas Seguro?' }, class:'btn btn-danger' %></td>
                       </tr>
                     <% end %>
@@ -102,6 +102,7 @@
                 </div>
               </div>
             </div>
+            
             <br>
             <br>
             <br>

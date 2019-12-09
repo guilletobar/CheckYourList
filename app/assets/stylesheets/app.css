@@ -280,7 +280,7 @@ footer.footer-dark {
       background-color: #f2f2f2; }
   .main-menu.menu-dark {
     color: #dcdcdc;
-    background: #1D2B36; }
+    background: #24282A; }
     .main-menu.menu-dark .main-menu-header {
       padding: 20px; }
       .main-menu.menu-dark .main-menu-header .menu-search {
@@ -290,7 +290,7 @@ footer.footer-dark {
         .main-menu.menu-dark .main-menu-header .menu-search:focus {
           border-color: #020304; }
     .main-menu.menu-dark .navigation {
-      background: #1D2B36; }
+      background: #24282A; }
       .main-menu.menu-dark .navigation .navigation-header {
         color: #dcdcdc;
         padding: 24px 20px 8px 20px; }
@@ -311,12 +311,12 @@ footer.footer-dark {
             position: relative;
             top: 3px; }
         .main-menu.menu-dark .navigation > li.open > ul {
-          background: #162029; }
+          background: #24282A; }
         .main-menu.menu-dark .navigation > li.open > a {
           color: #c3c3c3;
-          background: #162029; }
+          background: #24282A; }
         .main-menu.menu-dark .navigation > li.open .hover > a {
-          background: #121b22; }
+          background: #24282A; }
         .main-menu.menu-dark .navigation > li:not(.open) > ul {
           display: none; }
         .main-menu.menu-dark .navigation > li.hover > a, .main-menu.menu-dark .navigation > li:hover > a, .main-menu.menu-dark .navigation > li.active > a {

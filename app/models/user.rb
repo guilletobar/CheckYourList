@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  belongs_to :roles
-  rolify
+   # belongs_to :roles
+  #  rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

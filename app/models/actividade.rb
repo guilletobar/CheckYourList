@@ -1,5 +1,4 @@
 class Actividade < ApplicationRecord
-    belongs_to :profesionales
-    belongs_to :clientes
-
+    belongs_to :profesionale
+    belongs_to :client
 end
